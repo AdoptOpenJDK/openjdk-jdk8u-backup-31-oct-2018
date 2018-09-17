@@ -3926,7 +3926,7 @@ fi
 #CUSTOM_AUTOCONF_INCLUDE
 
 # Do not change or remove the following line, it is needed for consistency checks:
-DATE_WHEN_GENERATED=1536947420
+DATE_WHEN_GENERATED=1539171513
 
 ###############################################################################
 #
@@ -6895,7 +6895,7 @@ test -n "$target_alias" &&
       VAR_CPU_ENDIAN=big
       ;;
     powerpc64le)
-      VAR_CPU=ppc64
+      VAR_CPU=ppc64le
       VAR_CPU_ARCH=ppc
       VAR_CPU_BITS=64
       VAR_CPU_ENDIAN=little
@@ -7032,7 +7032,7 @@ $as_echo "$OPENJDK_BUILD_OS-$OPENJDK_BUILD_CPU" >&6; }
       VAR_CPU_ENDIAN=big
       ;;
     powerpc64le)
-      VAR_CPU=ppc64
+      VAR_CPU=ppc64le
       VAR_CPU_ARCH=ppc
       VAR_CPU_BITS=64
       VAR_CPU_ENDIAN=little
@@ -11318,6 +11318,21 @@ fi
 
 
 
+
+  # The company name, if any
+
+# Check whether --with-company-name was given.
+if test "${with_company_name+set}" = set; then :
+  withval=$with_company_name;
+fi
+
+  if test "x$with_company_name" = xyes; then
+    as_fn_error $? "--with-company-name must have a value" "$LINENO" 5
+  elif  ! [[ $with_company_name =~ ^[[:print:]]*$ ]] ; then
+    as_fn_error $? "--with-company-name contains non-printing characters: $with_company_name" "$LINENO" 5
+  elif test "x$with_company_name" != x; then
+    COMPANY_NAME="$with_company_name"
+  fi
 
 
 
@@ -16634,21 +16649,6 @@ $as_echo "yes with $JDK_TOPDIR" >&6; }
 
   HOTSPOT_DIST="$OUTPUT_ROOT/hotspot/dist"
   BUILD_HOTSPOT=true
-
-  # The company name, if any
-
-# Check whether --with-company-name was given.
-if test "${with_company_name+set}" = set; then :
-  withval=$with_company_name;
-fi
-
-  if test "x$with_company_name" = xyes; then
-    as_fn_error $? "--with-company-name must have a value" "$LINENO" 5
-  elif  ! [[ $with_company_name =~ ^[[:print:]]*$ ]] ; then
-    as_fn_error $? "--with-company-name contains non-printing characters: $with_company_name" "$LINENO" 5
-  elif test "x$with_company_name" != x; then
-    COMPANY_NAME="$with_company_name"
-  fi
 
 
 
