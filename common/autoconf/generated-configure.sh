@@ -700,6 +700,7 @@ C_O_FLAG_HI
 C_O_FLAG_HIGHEST
 CXXFLAGS_DEBUG_SYMBOLS
 CFLAGS_DEBUG_SYMBOLS
+ASFLAGS_DEBUG_SYMBOLS
 CXX_FLAG_DEPS
 C_FLAG_DEPS
 SET_SHARED_LIBRARY_MAPFILE
@@ -4350,7 +4351,7 @@ VS_SDK_PLATFORM_NAME_2017=
 #CUSTOM_AUTOCONF_INCLUDE
 
 # Do not change or remove the following line, it is needed for consistency checks:
-DATE_WHEN_GENERATED=1536947420
+DATE_WHEN_GENERATED=1537356874
 
 ###############################################################################
 #
@@ -41240,6 +41241,11 @@ $as_echo "$ac_cv_c_bigendian" >&6; }
 
 
   # Debug symbols
+  #
+  # By default don't set any specific assembler debug
+  # info flags for toolchains unless we know they work.
+  # See JDK-8207057.
+  ASFLAGS_DEBUG_SYMBOLS=""
   if test "x$TOOLCHAIN_TYPE" = xgcc; then
     if test "x$OPENJDK_TARGET_CPU_BITS" = "x64" && test "x$DEBUG_LEVEL" = "xfastdebug"; then
       CFLAGS_DEBUG_SYMBOLS="-g1"
@@ -41248,6 +41254,7 @@ $as_echo "$ac_cv_c_bigendian" >&6; }
       CFLAGS_DEBUG_SYMBOLS="-g"
       CXXFLAGS_DEBUG_SYMBOLS="-g"
     fi
+    ASFLAGS_DEBUG_SYMBOLS="-g"
   elif test "x$TOOLCHAIN_TYPE" = xsolstudio; then
     CFLAGS_DEBUG_SYMBOLS="-g -xs"
     CXXFLAGS_DEBUG_SYMBOLS="-g0 -xs"
@@ -41255,6 +41262,7 @@ $as_echo "$ac_cv_c_bigendian" >&6; }
     CFLAGS_DEBUG_SYMBOLS="-g"
     CXXFLAGS_DEBUG_SYMBOLS="-g"
   fi
+
 
 
 
